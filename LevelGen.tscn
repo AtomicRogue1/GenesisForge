@@ -1,0 +1,130 @@
+[gd_scene load_steps=15 format=3 uid="uid://djl8fhefqrgka"]
+
+[ext_resource type="Script" path="res://MapGeneration.cs" id="1_ky7j6"]
+[ext_resource type="Texture2D" uid="uid://c51rkaw6bouuh" path="res://assets/GenesisForgeSpritesheet.png" id="2_qvmoe"]
+[ext_resource type="Script" path="res://Player.cs" id="3_7sxuv"]
+[ext_resource type="Texture2D" uid="uid://ddm6agdhbuqyi" path="res://assets/PrototypeSheet.png" id="3_lf8nv"]
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_agu0g"]
+tile_data = PackedInt32Array(0, 458752, 1)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_rfteo"]
+tile_data = PackedInt32Array(0, 458752, 1342177281)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_qm4ga"]
+tile_data = PackedInt32Array(0, 458752, 1610612737)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_4achc"]
+tile_data = PackedInt32Array(0, 458752, 805306369)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2n5qa"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vlo17"]
+texture = ExtResource("2_qvmoe")
+1:1/0 = 0
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -8, -8, -8, -8, 8, 8, 8)
+3:1/0 = 0
+3:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:1/0/physics_layer_0/angular_velocity = 0.0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:1/0 = 0
+5:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:1/0/physics_layer_0/angular_velocity = 0.0
+5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+7:1/0 = 0
+7:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+7:1/0/physics_layer_0/angular_velocity = 0.0
+7:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -8, -8, 8, 8, 8)
+8:1/0 = 0
+8:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+8:1/0/physics_layer_0/angular_velocity = 0.0
+8:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, -8, -8, 8, 8)
+7:2/0 = 0
+7:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+7:2/0/physics_layer_0/angular_velocity = 0.0
+7:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, 8, 8, -8)
+8:2/0 = 0
+8:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+8:2/0/physics_layer_0/angular_velocity = 0.0
+8:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -8, -8, 8, -8, -8)
+1:3/0 = 0
+1:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:3/0/physics_layer_0/angular_velocity = 0.0
+1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:3/0 = 0
+3:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:3/0/physics_layer_0/angular_velocity = 0.0
+3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:3/0 = 0
+5:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:3/0/physics_layer_0/angular_velocity = 0.0
+5:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:5/0 = 0
+1:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:5/0/physics_layer_0/angular_velocity = 0.0
+1:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:5/0 = 0
+3:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:5/0/physics_layer_0/angular_velocity = 0.0
+3:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:5/0 = 0
+5:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:5/0/physics_layer_0/angular_velocity = 0.0
+5:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_v4q0o"]
+physics_layer_0/collision_layer = 1
+physics_layer_0/physics_material = SubResource("PhysicsMaterial_2n5qa")
+sources/0 = SubResource("TileSetAtlasSource_vlo17")
+pattern_0 = SubResource("TileMapPattern_agu0g")
+pattern_1 = SubResource("TileMapPattern_rfteo")
+pattern_2 = SubResource("TileMapPattern_qm4ga")
+pattern_3 = SubResource("TileMapPattern_4achc")
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dsr2b"]
+height = 38.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ktcdf"]
+atlas = ExtResource("3_lf8nv")
+region = Rect2(1, 21, 28, 39)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hfdlk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ktcdf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="LevelGen" type="Node2D"]
+script = ExtResource("1_ky7j6")
+GeneratingPercent = 30.0
+
+[node name="TileMap" type="TileMap" parent="."]
+scale = Vector2(1.28, 1.28)
+tile_set = SubResource("TileSet_v4q0o")
+format = 2
+layer_0/tile_data = PackedInt32Array(1835009, 196608, 1, 1835010, 196608, 1, 1835011, 196608, 1, 1900547, 196608, 1, 1900548, 196608, 1, 1900549, 196608, 1, 1900550, 196608, 1, 1900551, 196608, 1, 1900552, 196608, 1, 1900553, 196608, 1, 1900554, 196608, 1, 1900555, 196608, 1, 1900556, 196608, 1, 1900557, 196608, 1, 1900558, 196608, 1, 1900559, 196608, 1, 1900560, 196608, 1, 1900561, 196608, 1, 1900562, 196608, 1, 1900563, 196608, 1, 1900564, 196608, 1, 1900565, 196608, 1, 1900566, 196608, 1, 1835030, 196608, 1, 1835031, 196608, 1, 1835032, 196608, 1, 1835029, 196608, 1, 1835028, 196608, 1, 1835027, 196608, 1, 1835026, 196608, 1, 1835025, 196608, 1, 1835024, 196608, 1, 1835023, 196608, 1, 1835022, 196608, 1, 1835021, 196608, 1, 1835020, 196608, 1, 1835019, 196608, 1, 1769482, 196608, 1, 1769481, 196608, 1, 1769480, 196608, 1, 1769479, 196608, 1, 1769478, 196608, 1, 1769477, 196608, 1, 1769476, 196608, 1, 1769475, 196608, 1, 1703939, 196608, 1, 1703938, 196608, 1, 1703937, 196608, 1, 1703936, 196608, 1, 1769472, 196608, 1, 1835007, 196608, 1, 1900543, 196608, 1, 1835008, 196608, 1, 1900544, 196608, 1, 1900545, 196608, 1, 1900546, 196608, 1, 1835017, 196608, 1, 1835016, 196608, 1, 1835015, 196608, 1, 1835014, 196608, 1, 1835013, 196608, 1, 1835012, 196608, 1, 1769473, 196608, 1, 1769474, 196608, 1, 1835018, 196608, 1, 1769492, 196608, 1, 1769493, 196608, 1, 1769494, 196608, 1, 1769495, 196608, 1, 1769496, 196608, 1, 1769497, 196608, 1, 1769498, 196608, 1, 1769499, 196608, 1, 1835034, 196608, 1, 1835033, 196608, 1, 1900567, 196608, 1, 1900568, 196608, 1, 1900569, 196608, 1, 1900570, 196608, 1, 1835035, 196608, 1, 1703962, 196608, 1, 1638426, 196608, 1, 1572890, 196608, 1, 1703963, 196608, 1, 1703964, 196608, 1, 1638428, 196608, 1, 1572892, 196608, 1, 1507356, 196608, 1, 1507355, 196608, 1, 1572891, 196608, 1, 1638427, 196608, 1, 1441819, 196608, 1, 1441818, 196608, 1, 1376282, 196608, 1, 1310746, 196608, 1, 1507354, 196608, 1, 1376283, 196608, 1, 1310747, 196608, 1, 1441820, 196608, 1, 1441791, 196608, 1, 1507326, 196608, 1, 1572862, 196608, 1, 1638398, 196608, 1, 1703934, 196608, 1, 1703935, 196608, 1, 1769471, 196608, 1, 1638400, 196608, 1, 1572864, 196608, 1, 1507328, 196608, 1, 1441792, 196608, 1, 1441793, 196608, 1, 1376257, 196608, 1, 1310721, 196608, 1, 1310720, 196608, 1, 1376256, 196608, 1, 1507327, 196608, 1, 1572863, 196608, 1, 1638399, 196608, 1, 1376255, 196608, 1, 1310719, 196608, 1, 1507329, 196608, 1, 1572865, 196608, 1, 1638401, 196608, 1)
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(-281, -146)
+script = ExtResource("3_7sxuv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(320, 500)
+scale = Vector2(1.71453, 1.54656)
+shape = SubResource("CapsuleShape2D_dsr2b")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
+texture_filter = 1
+position = Vector2(320, 500)
+scale = Vector2(1.71453, 1.54656)
+sprite_frames = SubResource("SpriteFrames_hfdlk")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+anchor_mode = 0
