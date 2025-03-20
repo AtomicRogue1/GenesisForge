@@ -1,0 +1,95 @@
+[gd_scene load_steps=10 format=3 uid="uid://uuib8fdj8g4s"]
+
+[ext_resource type="PackedScene" uid="uid://djl8fhefqrgka" path="res://LevelGen.tscn" id="1_wuqyb"]
+[ext_resource type="Texture2D" uid="uid://kn7dvse502ov" path="res://assets/UI/Grabber.png" id="2_7teaj"]
+[ext_resource type="Script" path="res://assets/Scenes/DebugScript.cs" id="2_vku6y"]
+[ext_resource type="Script" path="res://assets/Scenes/SidewayMoveSlider.cs" id="3_kj4ds"]
+[ext_resource type="PackedScene" uid="uid://duw3p2r24hue7" path="res://assets/Prefabs/player.tscn" id="5_7fe6w"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qimed"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ebw4m"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o5gtv"]
+draw_center = false
+border_width_left = 60
+border_width_top = 60
+border_width_right = 60
+border_width_bottom = 60
+corner_radius_top_left = 60
+corner_radius_top_right = 60
+corner_radius_bottom_right = 60
+corner_radius_bottom_left = 60
+corner_detail = 12
+
+[sub_resource type="Theme" id="Theme_631ir"]
+HSlider/icons/grabber = ExtResource("2_7teaj")
+HSlider/icons/grabber_highlight = ExtResource("2_7teaj")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_qimed")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_ebw4m")
+HSlider/styles/slider = SubResource("StyleBoxFlat_o5gtv")
+
+[node name="Game" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(270, 480)
+
+[node name="LevelGen" parent="." instance=ExtResource("1_wuqyb")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -186.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="JumpButton" type="Button" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -155.0
+offset_right = -31.0
+offset_bottom = -35.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="MovementInputSlider" type="HSlider" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 22.0
+offset_top = -155.0
+offset_right = 356.0
+offset_bottom = -35.0
+grow_vertical = 0
+theme = SubResource("Theme_631ir")
+min_value = -1.0
+max_value = 1.0
+step = 0.0
+script = ExtResource("3_kj4ds")
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Label" type="Label" parent="." node_paths=PackedStringArray("UICompToDebug")]
+offset_left = 63.0
+offset_top = 65.0
+offset_right = 451.0
+offset_bottom = 151.0
+theme_override_font_sizes/font_size = 30
+text = "fewfwefwe"
+script = ExtResource("2_vku6y")
+UICompToDebug = NodePath("../CanvasLayer/MovementInputSlider")
+
+[node name="Player" parent="." instance=ExtResource("5_7fe6w")]
