@@ -1,10 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://uuib8fdj8g4s"]
+[gd_scene load_steps=12 format=3 uid="uid://uuib8fdj8g4s"]
 
-[ext_resource type="PackedScene" uid="uid://djl8fhefqrgka" path="res://LevelGen.tscn" id="1_wuqyb"]
+[ext_resource type="PackedScene" uid="uid://djl8fhefqrgka" path="res://assets/Prefabs/LevelGen.tscn" id="1_72y61"]
 [ext_resource type="Texture2D" uid="uid://kn7dvse502ov" path="res://assets/UI/Grabber.png" id="2_7teaj"]
-[ext_resource type="Script" path="res://assets/Scenes/DebugScript.cs" id="2_vku6y"]
-[ext_resource type="Script" path="res://assets/Scenes/SidewayMoveSlider.cs" id="3_kj4ds"]
+[ext_resource type="Script" path="res://assets/Scripts/JumpButton.cs" id="2_t12u6"]
+[ext_resource type="Script" path="res://assets/Scripts/SidewayMoveSlider.cs" id="3_kj4ds"]
 [ext_resource type="PackedScene" uid="uid://duw3p2r24hue7" path="res://assets/Prefabs/player.tscn" id="5_7fe6w"]
+[ext_resource type="Script" path="res://assets/Scenes/testScript1.cs" id="5_8ymdq"]
+[ext_resource type="Script" path="res://assets/Scenes/testScript2.cs" id="6_ejq2t"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qimed"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -37,7 +39,7 @@ HSlider/styles/slider = SubResource("StyleBoxFlat_o5gtv")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(270, 480)
 
-[node name="LevelGen" parent="." instance=ExtResource("1_wuqyb")]
+[node name="LevelGen" parent="." instance=ExtResource("1_72y61")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -50,7 +52,7 @@ offset_top = -186.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="JumpButton" type="Button" parent="CanvasLayer"]
+[node name="JumpButton" type="Button" parent="CanvasLayer" node_paths=PackedStringArray("UIComponent")]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -62,6 +64,10 @@ offset_right = -31.0
 offset_bottom = -35.0
 grow_horizontal = 0
 grow_vertical = 0
+toggle_mode = true
+action_mode = 0
+script = ExtResource("2_t12u6")
+UIComponent = NodePath("../../Label")
 
 [node name="MovementInputSlider" type="HSlider" parent="CanvasLayer"]
 anchors_preset = 2
@@ -78,18 +84,40 @@ max_value = 1.0
 step = 0.0
 script = ExtResource("3_kj4ds")
 
-[node name="Button" type="Button" parent="CanvasLayer"]
-offset_right = 8.0
-offset_bottom = 8.0
+[node name="TestButton1" type="Button" parent="CanvasLayer"]
+offset_left = 47.0
+offset_top = 31.0
+offset_right = 226.0
+offset_bottom = 120.0
+toggle_mode = true
+action_mode = 0
+text = "Test 1"
+script = ExtResource("5_8ymdq")
+Action = "Lmao"
 
-[node name="Label" type="Label" parent="." node_paths=PackedStringArray("UICompToDebug")]
-offset_left = 63.0
-offset_top = 65.0
-offset_right = 451.0
-offset_bottom = 151.0
+[node name="TestButton2" type="Button" parent="CanvasLayer"]
+offset_left = 335.0
+offset_top = 32.0
+offset_right = 489.0
+offset_bottom = 119.0
+toggle_mode = true
+action_mode = 0
+text = "Test 2"
+script = ExtResource("6_ejq2t")
+Action = "Bruh"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 95.0
+offset_top = 146.0
+offset_right = 483.0
+offset_bottom = 232.0
 theme_override_font_sizes/font_size = 30
 text = "fewfwefwe"
-script = ExtResource("2_vku6y")
-UICompToDebug = NodePath("../CanvasLayer/MovementInputSlider")
+autowrap_mode = 2
 
 [node name="Player" parent="." instance=ExtResource("5_7fe6w")]
+floor_constant_speed = true
+safe_margin = 0.001
+
+[connection signal="drag_ended" from="CanvasLayer/MovementInputSlider" to="Player" method="_on_movement_input_slider_drag_ended"]
+[connection signal="drag_started" from="CanvasLayer/MovementInputSlider" to="Player" method="_on_movement_input_slider_drag_started"]

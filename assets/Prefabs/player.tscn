@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://duw3p2r24hue7"]
 
-[ext_resource type="Script" path="res://Player.cs" id="1_7c7qg"]
+[ext_resource type="Script" path="res://assets/Scripts/Player.cs" id="1_7c7qg"]
 [ext_resource type="Texture2D" uid="uid://ddm6agdhbuqyi" path="res://assets/PrototypeSheet.png" id="2_5xu2r"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dsr2b"]
@@ -24,6 +24,7 @@ animations = [{
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(-94, -133)
 floor_stop_on_slope = false
+floor_max_angle = 1.06465
 script = ExtResource("1_7c7qg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -1,0 +1,22 @@
+using Godot;
+using System;
+
+public partial class SidewayMoveSlider : HSlider
+{
+	// Called when the node enters the scene tree for the first time.
+	public override void _Ready()
+	{
+		this.DragEnded += ResetSlider;
+	}
+
+	// Called every frame. 'delta' is the elapsed time since the previous frame.
+	public override void _Process(double delta)
+	{
+	}
+	
+	// This function is to reset the slider once dragging ends, just for looking neat.
+	private void ResetSlider(bool valueChanged)
+	{
+		Value=0;
+	}
+}

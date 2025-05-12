@@ -1,0 +1,91 @@
+[gd_scene load_steps=10 format=3 uid="uid://djl8fhefqrgka"]
+
+[ext_resource type="Texture2D" uid="uid://c51rkaw6bouuh" path="res://assets/GenesisForgeSpritesheet.png" id="2_fqqv4"]
+[ext_resource type="Script" path="res://assets/Scripts/MapGeneration.cs" id="2_r5ti5"]
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_agu0g"]
+tile_data = PackedInt32Array(0, 458752, 1)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_rfteo"]
+tile_data = PackedInt32Array(0, 458752, 1342177281)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_qm4ga"]
+tile_data = PackedInt32Array(0, 458752, 1610612737)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_4achc"]
+tile_data = PackedInt32Array(0, 458752, 805306369)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2n5qa"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vlo17"]
+texture = ExtResource("2_fqqv4")
+1:1/0 = 0
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -8, -8, -8, -8, 8, 8, 8)
+3:1/0 = 0
+3:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:1/0/physics_layer_0/angular_velocity = 0.0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:1/0 = 0
+5:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:1/0/physics_layer_0/angular_velocity = 0.0
+5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+7:1/0 = 0
+7:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+7:1/0/physics_layer_0/angular_velocity = -0.205
+7:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -8, -8, 8, 8, 8)
+8:1/0 = 0
+8:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+8:1/0/physics_layer_0/angular_velocity = 0.0
+8:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, -8, -8, 8, 8)
+7:2/0 = 0
+7:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+7:2/0/physics_layer_0/angular_velocity = 0.0
+7:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, 8, 8, -8)
+8:2/0 = 0
+8:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+8:2/0/physics_layer_0/angular_velocity = 0.0
+8:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -8, -8, 8, -8, -8)
+1:3/0 = 0
+1:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:3/0/physics_layer_0/angular_velocity = 0.0
+1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:3/0 = 0
+3:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:3/0/physics_layer_0/angular_velocity = 0.0
+3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:3/0 = 0
+5:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:3/0/physics_layer_0/angular_velocity = 0.0
+5:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:5/0 = 0
+1:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:5/0/physics_layer_0/angular_velocity = 0.0
+1:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:5/0 = 0
+3:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:5/0/physics_layer_0/angular_velocity = 0.0
+3:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:5/0 = 0
+5:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:5/0/physics_layer_0/angular_velocity = 0.0
+5:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_v4q0o"]
+physics_layer_0/collision_layer = 1
+physics_layer_0/physics_material = SubResource("PhysicsMaterial_2n5qa")
+sources/0 = SubResource("TileSetAtlasSource_vlo17")
+pattern_0 = SubResource("TileMapPattern_agu0g")
+pattern_1 = SubResource("TileMapPattern_rfteo")
+pattern_2 = SubResource("TileMapPattern_qm4ga")
+pattern_3 = SubResource("TileMapPattern_4achc")
+
+[node name="LevelGen" type="Node2D"]
+script = ExtResource("2_r5ti5")
+
+[node name="TileMap" type="TileMap" parent="."]
+scale = Vector2(2, 2)
+tile_set = SubResource("TileSet_v4q0o")
+format = 2
+layer_0/tile_data = PackedInt32Array(524286, 196608, 1, 589822, 196608, 1, 655358, 196608, 1, 720894, 196608, 1, 786430, 196608, 1, 851966, 196608, 1, 917502, 196608, 1, 983038, 196608, 1, 1048574, 196608, 1, 1114110, 196608, 1, 1179646, 196608, 1, 524287, 196608, 1, 589823, 196608, 1, 655359, 196608, 1, 720895, 196608, 1, 786431, 196608, 1, 851967, 196608, 1, 917503, 196608, 1, 983039, 196608, 1, 1048575, 196608, 1, 1114111, 196608, 1, 1179647, 196608, 1, 458752, 196608, 1, 524288, 196608, 1, 589824, 196608, 1, 655360, 196608, 1, 720896, 196608, 1, 786432, 196608, 1, 851968, 196608, 1, 917504, 196608, 1, 1048576, 196608, 1, 1114112, 196608, 1, 1048577, 196608, 1, 1114113, 196608, 1, 1048578, 196608, 1, 1114114, 196608, 1, 1048579, 196608, 1, 1114115, 196608, 1, 1048580, 196608, 1, 1114116, 196608, 1, 1048581, 196608, 1, 1114117, 196608, 1, 1048582, 196608, 1, 1114118, 196608, 1, 1048583, 196608, 1, 1114119, 196608, 1, 1048584, 196608, 1, 1114120, 196608, 1, 1048585, 196608, 1, 1114121, 196608, 1, 1048586, 196608, 1, 1114122, 196608, 1, 1048587, 196608, 1, 1114123, 196608, 1, 1048588, 196608, 1, 1114124, 196608, 1, 1048589, 196608, 1, 1114125, 196608, 1, 1048590, 196608, 1, 1114126, 196608, 1, 1048591, 196608, 1, 1114127, 196608, 1, 1048592, 196608, 1, 1114128, 196608, 1, 1048593, 196608, 1, 1114129, 196608, 1, 1048594, 196608, 1, 1114130, 196608, 1, 1048595, 196608, 1, 1114131, 196608, 1, 1048596, 196608, 1, 1114132, 196608, 1, 1048597, 196608, 1, 1114133, 196608, 1, 1048598, 196608, 1, 1114134, 196608, 1, 1048599, 196608, 1, 1114135, 196608, 1, 1048600, 196608, 1, 1114136, 196608, 1, 1048601, 196608, 1, 1114137, 196608, 1, 1048602, 196608, 1, 1114138, 196608, 1, 1048603, 196608, 1, 1114139, 196608, 1, 458780, 196608, 1, 524316, 196608, 1, 589852, 196608, 1, 655388, 196608, 1, 720924, 196608, 1, 786460, 196608, 1, 851996, 196608, 1, 917532, 196608, 1, 983068, 196608, 1, 1048604, 196608, 1, 1114140, 196608, 1, 458781, 196608, 1, 524317, 196608, 1, 589853, 196608, 1, 655389, 196608, 1, 720925, 196608, 1, 786461, 196608, 1, 851997, 196608, 1, 917533, 196608, 1, 983069, 196608, 1, 1048605, 196608, 1, 1114141, 196608, 1, 458782, 196608, 1, 524318, 196608, 1, 589854, 196608, 1, 655390, 196608, 1, 720926, 196608, 1, 786462, 196608, 1, 851998, 196608, 1, 917534, 196608, 1, 983070, 196608, 1, 1048606, 196608, 1, 1114142, 196608, 1, 983040, 196608, 1)
