@@ -116,6 +116,8 @@ text = "fewfwefwe"
 autowrap_mode = 2
 
 [node name="Player" parent="." instance=ExtResource("5_7fe6w")]
-position = Vector2(-6, -270)
 floor_constant_speed = true
 safe_margin = 0.001
+
+[connection signal="drag_ended" from="CanvasLayer/MovementInputSlider" to="Player" method="_on_movement_input_slider_drag_ended"]
+[connection signal="drag_started" from="CanvasLayer/MovementInputSlider" to="Player" method="_on_movement_input_slider_drag_started"]

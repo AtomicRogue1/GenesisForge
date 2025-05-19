@@ -32,7 +32,6 @@ public partial class MapGeneration : Node2D
 	int SmoothingParameter = 4;
 
 
-	// For generating map at start of level
 	public override void _Ready()
 	{
 		levelTilemap = GetNode<TileMap>("TileMap");
