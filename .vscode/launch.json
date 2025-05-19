@@ -1,0 +1,15 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run Godot Game",
+      "type": "cppdbg",
+      "request": "launch",
+      "preLaunchTask": "Run Godot",
+      "program": "C:/Users/Yash Verma/Desktop/Godot/Godot_v4.2.1-stable_mono_win64.exe",
+      "args": ["--path", "${workspaceFolder}"],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}"
+    }
+  ]
+}
