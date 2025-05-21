@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="GenesisForge"
-run/main_scene="res://assets/Scenes/MainMenu.tscn"
+run/main_scene="res://assets/Scenes/Game.tscn"
 config/features=PackedStringArray("4.2", "C#", "Mobile")
 config/icon="res://icon.svg"
 
@@ -25,7 +25,7 @@ window/handheld/orientation=1
 
 [dotnet]
 
-project/assembly_name="PrototypingPlayground"
+project/assembly_name="GenesisForge"
 
 [input]
 
@@ -44,6 +44,9 @@ pointing/emulate_touch_from_mouse=true
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
 textures/vram_compression/import_etc2_astc=true
 anti_aliasing/screen_space_roughness_limiter/enabled=false
+textures/decals/filter=0
+textures/light_projectors/filter=0

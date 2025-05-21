@@ -17,7 +17,9 @@ public partial class Player : CharacterBody2D
 	public float acceleration = 3;
 	[Export]
 	public float deceleration = 3;
-	bool sidewayInputBeingDragged;
+	[Export]
+	float deadZoneInputValue = 0.25f;
+	// bool sidewayInputBeingDragged;
 
 	// Get the gravity from the project settings to be synced with RigidBody nodes.
 	public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
@@ -25,9 +27,15 @@ public partial class Player : CharacterBody2D
 	public override void _Ready()
 	{
 		// Getting them from the tree
-		movementInputSlider = GetNode<HSlider>("../CanvasLayer/MovementInputSlider");
-		jumpButton = GetNode<Button>("../CanvasLayer/JumpButton");
-		sidewayInputBeingDragged=false;
+		movementInputSlider = GetTree().CurrentScene.GetNodeOrNull<HSlider>("CanvasLayer/MovementInputSlider");
+		jumpButton = GetTree().CurrentScene.GetNodeOrNull<Button>("CanvasLayer/JumpButton");
+
+		if (movementInputSlider == null)
+		GD.PushError("MovementInputSlider not found in scene!");
+
+		if (jumpButton == null)
+		GD.PushError("JumpButton not found in scene!");
+		// sidewayInputBeingDragged=false;
 	}
 
 	public float lerp(float a, float b, float t)
@@ -40,7 +48,10 @@ public partial class Player : CharacterBody2D
 		float sidewayInput = (float)movementInputSlider.Value;
 		Godot.Vector2 velocity = Velocity;
 
+		if(Math.Abs(sidewayInput) >= deadZoneInputValue)
 		velocity.X = moveSpeed * sidewayInput; // => This is zero acceleration movement.
+		else
+		velocity.X = 0;
 
 		velocity.Y += (float)(gravity * delta);
 
@@ -48,13 +59,13 @@ public partial class Player : CharacterBody2D
 		MoveAndSlide();
 	}
 
-	private void _on_movement_input_slider_drag_started()
-	{
-		sidewayInputBeingDragged=true;
-	}
+	// private void _on_movement_input_slider_drag_started()
+	// {
+	// 	sidewayInputBeingDragged=true;
+	// }
 
-	private void _on_movement_input_slider_drag_ended(bool value_changed)
-	{
-		sidewayInputBeingDragged=false;
-	}
+	// private void _on_movement_input_slider_drag_ended(bool value_changed)
+	// {
+	// 	sidewayInputBeingDragged=false;
+	// }
 }
